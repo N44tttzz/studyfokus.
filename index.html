@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOKUS. | Your Cozy Study Space</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">🌱</div>
+      <div><h1>FOKUS.</h1><p>Your little study getaway</p></div>
+    </div>
+
+    <div class="island-card">
+      <div class="island-art">🏝️</div>
+      <div class="island-decor-strip" id="islandDecorDisplay" aria-label="Placed island decorations"></div>
+      <p class="eyebrow">YOUR ISLAND</p>
+      <h2 id="islandNameDisplay">Maple Island</h2>
+      <p class="island-caption">A little progress every day.</p>
+      <button class="island-edit-btn" id="openIslandEditor">✦ Customize island</button>
+      <div class="island-stats">
+        <div><strong id="sidebarBells">0</strong><span>🔔 Bells</span></div>
+        <div><strong id="sidebarSessions">0</strong><span>📚 Sessions</span></div>
+      </div>
+    </div>
+
+    <p class="nav-label">MENU</p>
+    <nav class="navigation">
+      <button class="nav-btn active" data-page="home"><span>🏡</span> Home</button>
+      <button class="nav-btn" data-page="focus"><span>⏳</span> Focus Room</button>
+      <button class="nav-btn" data-page="techniques"><span>📖</span> Study Methods</button>
+      <button class="nav-btn" data-page="tasks"><span>📝</span> My Tasks</button>
+      <button class="nav-btn" data-page="rewards"><span>🎁</span> Island Rewards</button>
+    </nav>
+
+          <div class="sidebar-bottom">
+      <div class="quote-card">🌷 <p>"Small steps still move you forward."</p></div>
+      <button class="profile profile-edit" id="openProfileEditor" type="button" aria-label="Edit your profile">
+        <div class="avatar" id="profileAvatar">🧑🏻‍🌾</div>
+        <div><strong id="profileName">Island Student</strong><small id="profileIsland">Resident of Maple Island</small></div>
+        <span class="profile-pencil">✎</span>
+      </button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow" id="todayDate">YOUR STUDY ISLAND</p>
+        <h2 id="greeting">Good day, islander! 🌼</h2>
+      </div>
+      <div class="topbar-right">
+        <div class="weather-pill">☀️ <span>Sunny day</span></div>
+        <div class="bell-pill">🔔 <strong id="topBells">0</strong></div>
+      </div>
+    </header>
+
+    <!-- HOME -->
+    <section class="page active" id="homePage">
+      <div class="welcome-banner">
+        <div class="welcome-text">
+          <span class="banner-tag">WELCOME BACK, ISLANDER</span>
+          <h2>Your island is waiting<br>for you! 🌴</h2>
+          <p>Take a breath, grab your notes, and let's make today count.</p>
+          <div class="banner-actions">
+  <button class="primary-btn" data-go="focus">Start studying →</button>
+  <button class="customize-btn" id="openBannerEditor">Customize banner</button>
+</div>
+
+<div class="banner-editor" id="bannerEditor" hidden>
+  <h4>🌷 Customize your island</h4>
+
+  <label for="bannerUpload">Upload your banner picture</label>
+  <input type="file" id="bannerUpload" accept="image/*">
+
+  <label for="bannerTitle">Banner title</label>
+  <input type="text" id="bannerTitle" value="Your island is waiting for you! 🌴">
+
+  <label for="bannerSubtitle">Banner subtitle</label>
+  <input type="text" id="bannerSubtitle" value="Take a breath, grab your notes, and let's make today count.">
+
+  <div class="editor-buttons">
+    <button id="saveBanner" class="primary-btn">Save changes</button>
+    <button id="resetBanner" class="secondary-btn">Reset</button>
+  </div>
+</div>
+        </div>
+        <div class="banner-art">
+          <span class="cloud cloud-one">☁️</span>
+          <span class="sun-art">☀️</span>
+          <span class="tree tree-one">🌳</span>
+          <span class="tree tree-two">🌲</span>
+          <span class="flower flower-one">🌼</span>
+          <span class="flower flower-two">🌷</span>
+          <div class="island-ground"></div>
+        </div>
+      </div>
+
+      <div class="panel deadline-panel">
+        <div class="panel-heading"><div><p class="eyebrow">DON'T FORGET</p><h3>Upcoming deadlines</h3></div><span>⏰</span></div>
+        <div id="deadlineReminders" class="deadline-reminders"></div>
+      </div>
+
+      <div class="section-heading">
+        <div><p class="eyebrow">YOUR LITTLE JOURNEY</p><h3>Today's overview</h3></div>
+        <span class="date-chip" id="dateChip">Today</span>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card"><div class="stat-icon green">🍃</div><div><p>Focus sessions</p><h3 id="homeSessions">0</h3><small>Sessions completed</small></div></article>
+        <article class="stat-card"><div class="stat-icon yellow">🔔</div><div><p>Total bells</p><h3 id="homeBells">0</h3><small>Keep collecting!</small></div></article>
+        <article class="stat-card"><div class="stat-icon pink">🌸</div><div><p>Tasks completed</p><h3 id="homeTasks">0</h3><small>Little wins count</small></div></article>
+        <article class="stat-card"><div class="stat-icon blue">⏰</div><div><p>Focus minutes</p><h3 id="homeMinutes">0</h3><small>Time well spent</small></div></article>
+      </div>
+
+      <div class="home-columns">
+        <div class="panel">
+          <div class="panel-heading"><div><p class="eyebrow">YOUR PLAN</p><h3>Today's tasks</h3></div><button class="text-btn" data-go="tasks">See all →</button></div>
+          <div id="homeTaskList" class="compact-task-list"></div>
+          <button class="add-task-inline" data-go="tasks">＋ Add a study task</button>
+        </div>
+        <div class="panel tip-panel">
+          <div class="panel-heading"><div><p class="eyebrow">A LITTLE REMINDER</p><h3>Study tip of the day</h3></div><span>💡</span></div>
+          <div class="tip-illustration">📚🌿</div>
+          <h4>Try active recall!</h4>
+          <p>After reading a topic, close your book and try to explain what you remember. Your brain learns by retrieving information.</p>
+          <button class="text-btn" data-go="techniques">Explore study methods →</button>
+        </div>
+      </div>
+
+      <div class="panel weekly-panel">
+        <div class="panel-heading"><div><p class="eyebrow">YOUR WEEKLY PROGRESS</p><h3>Little steps add up</h3></div><span>🌻</span></div>
+        <div class="weekly-days" id="weeklyDays"></div>
+        <p class="muted-note">Every session is a little flower growing on your island.</p>
+      </div>
+    </section>
+
+    <!-- FOCUS ROOM -->
+    <section class="page" id="focusPage">
+      <div class="page-intro"><p class="eyebrow">TAKE A MOMENT FOR YOURSELF</p><h2>Focus Room ⏳</h2><p>Choose your pace. You don't have to rush.</p></div>
+      <div class="focus-layout">
+        <div class="panel timer-panel">
+          <div class="timer-tabs">
+            <button class="timer-tab active" data-mode="focus">Focus</button>
+            <button class="timer-tab" data-mode="short">Short break</button>
+            <button class="timer-tab" data-mode="long">Long break</button>
+          </div>
+          <div class="timer-circle" id="timerCircle">
+            <div class="timer-inner">
+              <span id="timerLabel">TIME TO FOCUS</span>
+              <strong id="timerDisplay">25:00</strong>
+              <small id="timerSubtext">You've got this 🌱</small>
+            </div>
+          </div>
+          <div class="timer-controls">
+            <button class="secondary-btn" id="resetTimer">↺ Reset</button>
+            <button class="primary-btn start-btn" id="startTimer">▶ Start focus</button>
+            <button class="secondary-btn" id="skipTimer">Skip ↠</button>
+          </div>
+          <div class="timer-settings">
+            <label>Focus <input type="number" id="focusDuration" min="1" max="120" value="25"> min</label>
+            <label>Break <input type="number" id="breakDuration" min="1" max="60" value="5"> min</label>
+          </div>
+        </div>
+<div class="lazy-river-panel panel">
+  <div class="river-heading">
+    <div>
+      <p class="eyebrow">YOUR LITTLE VACATION</p>
+      <h3>🌊 Lazy River</h3>
+      <p>Float away while you focus!</p>
+    </div>
+    <span class="river-badge">ISLAND RESORT</span>
+  </div>
+
+  <div class="river-controls">
+    <span>Choose your character:</span>
+
+    <button class="character-btn active" data-character="male">
+      👦 Boy
+    </button>
+
+    <button class="character-btn" data-character="female">
+      👧 Girl
+    </button>
+  </div>
+
+  <div class="lazy-river" id="lazyRiver">
+    <div class="river-bank bank-top"></div>
+    <div class="river-bank bank-bottom"></div>
+
+    <div class="river-water">
+      <div class="water-wave wave-one"></div>
+      <div class="water-wave wave-two"></div>
+      <div class="water-wave wave-three"></div>
+
+      <span class="water-flower">🌼</span>
+      <span class="water-flower flower-two">🪷</span>
+
+      <div class="float-character" id="floatCharacter">
+        <div class="character-emoji" id="characterEmoji">👦</div>
+        <div class="float-ring">🛟</div>
+      </div>
+    </div>
+
+    <div class="river-decoration river-tree">🌴</div>
+    <div class="river-decoration river-flower">🌺</div>
+    <div class="river-decoration river-rock">🪨</div>
+  </div>
+
+  <div class="river-footer">
+    <span id="riverStatus">Your floatie is waiting! 🛟</span>
+    <button class="river-sound-btn" id="riverSound">
+      🌊 Enable ocean sounds
+    </button>
+  </div>
+</div>
+        <div class="focus-side">
+          <div class="panel focus-quote">
+            <span class="big-leaf">🌿</span>
+            <p class="eyebrow">A NOTE FROM YOUR ISLAND</p>
+            <h3>One thing at a time.</h3>
+            <p>Put away distractions, take a deep breath, and focus on just one small task.</p>
+          </div>
+          <div class="panel sound-panel">
+            <div class="panel-heading"><div><p class="eyebrow">SET THE MOOD</p><h3>Focus atmosphere</h3></div>🎧</div>
+            <div class="sound-options">
+              <button class="sound-btn active" data-sound="none">🔕 Silent</button>
+              <button class="sound-btn" data-sound="rain">🌧️ Rain</button>
+              <button class="sound-btn" data-sound="forest">🐦 Forest</button>
+              <button class="sound-btn" data-sound="ocean">🌊 Ocean</button>
+            </div>
+            <p class="sound-note" id="soundNote">Enjoy a peaceful, quiet session.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDY METHODS -->
+    <section class="page" id="techniquesPage">
+      <div class="page-intro"><p class="eyebrow">FIND YOUR STUDY RHYTHM</p><h2>Study Methods 📚</h2><p>Different methods work for different tasks. Try one and see what feels right.</p></div>
+      <div class="technique-grid">
+        <article class="technique-card"><div class="tech-icon green">⏳</div><span class="difficulty">TIME MANAGEMENT</span><h3>Pomodoro Technique</h3><p>Study in focused intervals, followed by short breaks.</p><div class="tech-meta">25 min focus · 5 min break</div><button class="outline-btn use-method" data-method="pomodoro">Try this method →</button></article>
+        <article class="technique-card"><div class="tech-icon blue">🌊</div><span class="difficulty">FLEXIBLE FOCUS</span><h3>Flowtime</h3><p>Work until you naturally need a break. Track your focus time.</p><div class="tech-meta">Your pace · Your breaks</div><button class="outline-btn use-method" data-method="flowtime">Try this method →</button></article>
+        <article class="technique-card"><div class="tech-icon pink">🧠</div><span class="difficulty">MEMORY</span><h3>Active Recall</h3><p>Test your memory by recalling ideas without looking at your notes.</p><div class="tech-meta">Recall · Check · Repeat</div><button class="outline-btn use-method" data-method="recall">Learn how →</button></article>
+        <article class="technique-card"><div class="tech-icon yellow">🗓️</div><span class="difficulty">MEMORY</span><h3>Spaced Repetition</h3><p>Review information at increasing intervals over several days.</p><div class="tech-meta">Today · Tomorrow · Later</div><button class="outline-btn use-method" data-method="spaced">Learn how →</button></article>
+        <article class="technique-card"><div class="tech-icon purple">💬</div><span class="difficulty">UNDERSTANDING</span><h3>Feynman Technique</h3><p>Explain a concept in simple words, as if teaching someone new.</p><div class="tech-meta">Explain · Find gaps · Simplify</div><button class="outline-btn use-method" data-method="feynman">Learn how →</button></article>
+      </div>
+      <div class="panel method-detail" id="methodDetail">
+        <div class="panel-heading"><div><p class="eyebrow">YOUR STUDY TOOLBOX</p><h3>How to choose a method</h3></div>🧺</div>
+        <p>Select a method above to see how to use it. You can mix techniques depending on what you're studying.</p>
+      </div>
+    </section>
+
+    <!-- TASKS -->
+    <section class="page" id="tasksPage">
+      <div class="page-intro"><p class="eyebrow">ONE TASK AT A TIME</p><h2>My Study Tasks 📝</h2><p>Make a simple plan. You can always adjust it as you go.</p></div>
+      <div class="task-layout">
+        <div class="panel task-form-panel">
+          <h3>＋ Add a new task</h3>
+          <form id="taskForm">
+            <label for="taskTitle">What do you need to study?</label>
+            <input id="taskTitle" type="text" placeholder="e.g. Review chemistry notes" required maxlength="90">
+            <label for="taskSubject">Subject or category</label>
+            <select id="taskSubject">
+              <option>General</option><option>Mathematics</option><option>Science</option><option>Language</option><option>History</option><option>Arts</option><option>Other</option>
+            </select>
+            <label for="taskDate">Study date</label>
+            <input id="taskDate" type="date">
+            <button class="primary-btn full-btn" type="submit">Add to my list ＋</button>
+          </form>
+        </div>
+        <div class="panel task-list-panel">
+          <div class="panel-heading"><div><p class="eyebrow">YOUR CHECKLIST</p><h3>Island to-do list</h3></div><span>🌼</span></div>
+          <div class="task-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="pending">To do</button>
+            <button class="filter-btn" data-filter="done">Completed</button>
+          </div>
+          <div id="taskList"></div>
+          <p class="empty-state" id="emptyTasks">No tasks yet. Add your first little mission! 🌱</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REWARDS -->
+    <section class="page" id="rewardsPage">
+      <div class="page-intro"><p class="eyebrow">A LITTLE TREAT FOR YOUR EFFORT</p><h2>Island Rewards 🎁</h2><p>Every completed focus session earns you Bells. Collect them at your own pace!</p></div>
+      <div class="reward-summary panel">
+        <div class="reward-big-icon">🔔</div>
+        <div><p class="eyebrow">YOUR WALLET</p><h2><span id="rewardBells">0</span> Bells</h2><p>You've completed <strong id="rewardSessions">0</strong> focus sessions.</p></div>
+      </div>
+      <div class="section-heading"><div><p class="eyebrow">YOUR COLLECTION</p><h3>Island decorations</h3></div></div>
+      <div class="rewards-grid" id="rewardsGrid"></div>
+      <div class="panel reward-note"><span>🌷</span><div><h3>Remember, islander!</h3><p>You don't need to earn every reward. Studying is already an achievement. These decorations are just a fun way to celebrate your progress.</p></div></div>
+    </section>
+
+    <footer class="footer">Made with ☘️ and a little island magic · FOKUS.</footer>
+  </main>
+</div>
+
+<div class="modal-backdrop" id="profileModal" hidden>
+  <section class="editor-modal" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
+    <h2 id="profileModalTitle">Welcome to FOKUS. 🌱</h2>
+    <p id="profilePrompt">Write down your username to get started.</p>
+    <label for="usernameInput">Your username</label>
+    <input id="usernameInput" type="text" maxlength="24" placeholder="e.g. Alex" autocomplete="nickname">
+    <label for="profilePictureInput">Profile picture (optional)</label>
+    <input id="profilePictureInput" type="file" accept="image/*">
+    <div class="editor-buttons">
+      <button class="primary-btn" id="saveProfile" type="button">Save profile</button>
+      <button class="secondary-btn" id="cancelProfile" type="button">Cancel</button>
+    </div>
+  </section>
+</div>
+
+<div class="modal-backdrop" id="islandModal" hidden>
+  <section class="editor-modal island-modal" role="dialog" aria-modal="true" aria-labelledby="islandModalTitle">
+    <button class="modal-close" id="closeIslandEditor" type="button" aria-label="Close island editor">✕</button>
+    <h2 id="islandModalTitle">Customize your island 🏝️</h2>
+    <label for="islandNameInput">Island name</label>
+    <div class="island-name-form">
+      <input id="islandNameInput" type="text" maxlength="30" placeholder="Name your island">
+      <button class="primary-btn" id="saveIslandName" type="button">Save name</button>
+    </div>
+    <p class="island-editor-note">Buy decorations with Bells, then place or remove them from your island.</p>
+    <div class="island-preview" id="islandPreview" aria-label="Your island decorations"></div>
+    <p class="island-wallet">Your Bells: 🔔 <strong id="islandBells">0</strong></p>
+    <div class="island-shop" id="islandShop"></div>
+  </section>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
