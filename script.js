@@ -364,7 +364,7 @@ function renderHomeTasks() {
     title.textContent = task.title;
 
     const subject = document.createElement("small");
-    subject.textContent = task.subject;
+    subject.textContent = `${task.subject} · Due ${task.date}`;
 
     row.append(checkbox, title, subject);
     container.appendChild(row);
