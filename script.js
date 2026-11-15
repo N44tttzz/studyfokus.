@@ -337,7 +337,10 @@ function renderHomeTasks() {
   const container = $("homeTaskList");
   container.innerHTML = "";
 
-  const pending = data.tasks.filter(task => !task.done).slice(0, 4);
+  const pending = data.tasks
+    .filter(task => !task.done)
+    .sort((a, b) => (a.date || "9999-12-31").localeCompare(b.date || "9999-12-31"))
+    .slice(0, 4);
 
   if (!pending.length) {
     const message = document.createElement("p");
